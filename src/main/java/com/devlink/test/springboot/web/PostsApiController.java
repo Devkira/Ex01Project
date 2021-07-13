@@ -13,6 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class PostsApiController {
     private final PostsService postsService;
 
+    @DeleteMapping("/api/v1/posts/{id}")
+    public Long del(@PathVariable Long id) {
+        postsService.del(id);
+        return id;
+    }
+
     @PostMapping("/api/v1/posts")
     public Long save(@RequestBody PostsSaveRequestDto requestDto) {
         return postsService.save(requestDto);
